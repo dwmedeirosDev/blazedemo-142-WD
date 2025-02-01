@@ -30,7 +30,7 @@ public class PassagemTest {
     // Depois do teste
     @AfterEach
     public void finalizar() {
-        driver.quit(); // "Desligar o navegador"
+        //driver.quit(); // "Desligar o navegador"
     }
 
     // Teste
@@ -83,9 +83,11 @@ public class PassagemTest {
         
         // assertEquals é uma função do JUnit que verifica se o valor esperado é igual ao valor retornado
         assertEquals("Flights from São Paolo to New York:", driver.findElement(By.cssSelector("h3")).getText()); // Verificar se a mensagem apareceu
-        driver.findElement(By.cssSelector("tr:nth-child(1)")).click(); // Clicar no botão Choose This Flight
+        driver.findElement(By.cssSelector("tr:nth-child(1) .btn")).click(); // Clicar no botão Choose This Flight
 
         // Transição de página
+
+        // assertEquals é uma função do JUnit que verifica se o valor esperado é igual ao valor retornado
         assertEquals("Your flight from TLV to SFO has been reserved.", driver.findElement(By.cssSelector("h2")).getText()); // Verificar se a mensagem apareceu
     }
 }
