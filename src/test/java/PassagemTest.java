@@ -38,6 +38,8 @@ public class PassagemTest {
     public void comprarPassagem() {
         driver.get("https://www.blazedemo.com"); // Acessar o site Blazedemo
 
+        // ==============================================================================================================================
+
         // // Jeito que o professor ensinou em aula &&
         // // Selecionar o dropdown (Menu suspenso) de origem e destino e clicar no botão Find Flights
         // driver.findElement(By.name("fromPort")).click(); // Clicar no campo de origem
@@ -79,15 +81,35 @@ public class PassagemTest {
         driver.findElement(By.cssSelector("input.btn.btn-primary")).click(); // Clicar no botão Find Flights
         //Os principais métodos de localização de elementos são: By.id, By.name, By.className, By.tagName, By.xpath, By.cssSelector
      
-        // Transição de página
+        // =========== Transição de página ===========
         
         // assertEquals é uma função do JUnit que verifica se o valor esperado é igual ao valor retornado
         assertEquals("Flights from São Paolo to New York:", driver.findElement(By.cssSelector("h3")).getText()); // Verificar se a mensagem apareceu
         driver.findElement(By.cssSelector("tr:nth-child(1) .btn")).click(); // Clicar no botão Choose This Flight
 
-        // Transição de página
+        // =========== Transição de página ===========
 
         // assertEquals é uma função do JUnit que verifica se o valor esperado é igual ao valor retornado
         assertEquals("Your flight from TLV to SFO has been reserved.", driver.findElement(By.cssSelector("h2")).getText()); // Verificar se a mensagem apareceu
+        
+        driver.findElement(By.id("inputName")).sendKeys("David Medeiros"); // Preencher o campo "Nome"
+        driver.findElement(By.id("address")).sendKeys("Test"); // Preencher o campo "Endereço"
+        driver.findElement(By.id("city")).sendKeys("Rio de Janeiro"); // Preencher o campo "Cidade"
+        driver.findElement(By.id("state")).sendKeys("Rio de Janeiro"); // Preencher o campo "Estado"
+        driver.findElement(By.id("zipCode")).sendKeys("11111-222"); // Preencher o campo "Cep"
+        driver.findElement(By.id("cardType")).click(); // Clicar no campo "Tipo de cartão"
+
+        driver.findElement(By.xpath("//option[@value='visa']")).click(); // Selecionar a opção Visa
+        driver.findElement(By.id("creditCardNumber")).sendKeys("1111.2222.3333.4444"); // Preencher o campo "Número do cartão"
+        driver.findElement(By.id("creditCardMonth")).sendKeys("12"); // Preencher o campo "Mês do cartão"
+        driver.findElement(By.id("creditCardYear")).sendKeys("2028"); // Preencher o campo "Ano do cartão"
+        driver.findElement(By.id("nameOnCard")).sendKeys("David Medeiros"); // Preencher o campo "Nome do cartão"
+
+        driver.findElement(By.id("rememberMe")).click(); // Clicar no campo "Lembrar-me"
+        driver.findElement(By.cssSelector("input.btn.btn-primary")).click(); // Clicar no botão Find Flights
+
+        // =========== Transição de página ===========
+
+        assertEquals("Thank you for your purchase today!", driver.findElement(By.cssSelector("h1")).getText()); // Verificar se a mensagem apareceu
     }
 }
